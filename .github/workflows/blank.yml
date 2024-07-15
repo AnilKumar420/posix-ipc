@@ -22,10 +22,7 @@ jobs:
     steps:
     # Steps represent a sequence of tasks that will be executed as part of the job
     - name: Checkout repository
-      uses: actions/checkout@v2
-
-    - name: Set up CMake
-      uses: actions/setup-cmake@v2
+      uses: actions/checkout@v2   
 
     - name: Set up compiler
       if: matrix.os == 'ubuntu-latest'
