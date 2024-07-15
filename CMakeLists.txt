@@ -8,5 +8,5 @@ set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 # Add the executable
-add_executable(HelloWorld main.cpp)
+add_executable(HelloWorld main1.cpp)
 
