@@ -5,7 +5,7 @@ name: CI
 # Controls when the workflow will run
 on:
   push:
-    branches: [ "mymain" ]
+    branches: [ "AnilKumar420-patch-2" ]
   pull_request:
     branches: [ "mymain" ]
   workflow_dispatch:
