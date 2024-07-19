@@ -32,15 +32,19 @@ jobs:
       if: matrix.os == 'ubuntu-latest'
       run: |
         sudo apt-get update
-        sudo apt-get install -y gcc g++ clang clang-tidy
+        sudo apt-get install -y gcc g++ clang clang-tidy bear
 
     - name: Configure CMake
       run: |
-        cmake -S . -B build
+        cmake -S . -B build -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+
+    - name: Generate compile_commands.json
+      run: |
+        bear -- cmake --build build
 
     - name: Run Clang-Tidy
       run: |
-        cmake --build build --target tidy
+        clang-tidy src/*.cpp -p build -checks='*' -fix
 
     - name: Build
       run: |
