@@ -9,14 +9,19 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 # Add the executable
 add_executable(HelloWorld main.cpp)
+
+# Generate compilation database
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
+# Find clang-tidy
 find_program(CLANG_TIDY_EXE NAMES clang-tidy)
+
 if(CLANG_TIDY_EXE)
   set(CMAKE_CXX_CLANG_TIDY "${CLANG_TIDY_EXE}")
-  add_custom_target(tidy
 
-    COMMAND ${CLANG_TIDY_EXE} -p ${CMAKE_BINARY_DIR} ${PROJECT_SOURCE_DIR}/*
+  add_custom_target(tidy
+    COMMAND ${CLANG_TIDY_EXE} -p ${CMAKE_CURRENT_BINARY_DIR} ${CMAKE_CURRENT_SOURCE_DIR}/src
     COMMENT "Running clang-tidy..."
+    WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
   )
 endif()
-
-
