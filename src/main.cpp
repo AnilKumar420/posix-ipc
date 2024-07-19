@@ -26,6 +26,7 @@ private:
 
 int main() {
     Example ex;
+    std::cout<<"Hello"<<std::endl;
     ex.addValue(42);
     std::cout << "Value at index 0: " << ex.getValue(0) << std::endl;
     std::cout << "Value at index 1: " << ex.getValue(1) << std::endl; // Issue: out-of-bounds access
