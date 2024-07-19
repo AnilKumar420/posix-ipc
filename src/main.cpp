@@ -1,28 +1,24 @@
-// null_pointer_example.cpp
 #include <iostream>
 
-class Example {
+class MyClass {
 public:
-    Example() : ptr(nullptr) {}
+    MyClass() : data(nullptr) {}
 
-    void setPtr(int* p) {
-        ptr = p;
+    void setData(int* d) {
+        data = d;
     }
 
-    void usePtr() const {
-        if (ptr) {
-            std::cout << "Value: " << *ptr << std::endl; // Should be flagged if ptr is null
-        } else {
-            std::cout << "Pointer is null!" << std::endl;
-        }
+    void printData() const {
+        // Potential issue: dereferencing a null pointer
+        std::cout << "Data: " << *data << std::endl; // clang-tidy should flag this
     }
 
 private:
-    int* ptr;
+    int* data;
 };
 
 int main() {
-    Example ex;
-    ex.usePtr(); // This should be flagged if `ptr` is null
+    MyClass obj;
+    obj.printData(); // This will cause a problem because data is null
     return 0;
 }
