@@ -5,7 +5,7 @@ int main()
 {
     std::cout<<"hello world";
     int x=2;
-    int *ptr=&x;
+    int *ptr=nullptr;
     std::cout<<*ptr;
     return 0;
 }
