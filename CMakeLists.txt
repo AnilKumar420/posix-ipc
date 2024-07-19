@@ -8,7 +8,7 @@ set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 # Add the executable
-add_executable(HelloWorld main.cpp)
+add_executable(HelloWorld src/main.cpp)
 
 # Generate compilation database
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
