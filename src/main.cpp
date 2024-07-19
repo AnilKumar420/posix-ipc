@@ -6,6 +6,7 @@ public:
 
     void setPtr(int* p) {
         ptr = p;
+        std::cout<<"setPtr";
     }
 
     void usePtr() const {
