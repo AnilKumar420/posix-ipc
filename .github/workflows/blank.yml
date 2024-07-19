@@ -35,6 +35,10 @@ jobs:
       run: |
         bear -- cmake --build build
 
+    - name: Verify compile_commands.json
+      run: |
+        ls -l build/compile_commands.json
+
     - name: Run Clang-Tidy
       run: |
         clang-tidy src/main.cpp -p build -checks='clang-analyzer-core.NullDereference' -fix
