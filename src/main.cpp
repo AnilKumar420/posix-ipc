@@ -1,24 +1,19 @@
+// src/example.cpp
+
 #include <iostream>
 
-class MyClass {
+class Example {
 public:
-    MyClass() : data(nullptr) {}
-
-    void setData(int* d) {
-        data = d;
+    void process() {
+        int* ptr = nullptr;
+        // Potential null pointer dereference
+        *ptr = 10;  // This line should trigger the null dereference check
     }
-
-    void printData() const {
-        // Potential issue: dereferencing a null pointer
-        std::cout << "Data: " << *data << std::endl; // clang-tidy should flag this
-    }
-
-private:
-    int* data;
 };
 
 int main() {
-    MyClass obj;
-    obj.printData(); // This will cause a problem because data is null
+    Example ex;
+    ex.process();
     return 0;
 }
+

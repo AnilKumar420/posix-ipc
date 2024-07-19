@@ -1,0 +1,6 @@
+# .clang-tidy
+
+Checks:          'clang-analyzer-core.NullDereference'
+WarningsAsErrors: ''
+CheckOptions:    []
+
