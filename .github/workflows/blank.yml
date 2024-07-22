@@ -8,6 +8,8 @@ on:
     branches: [ "mymain" ]
   workflow_dispatch:
 
+env:
+  GITHUB_TOKEN: ${{ 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 }}
 jobs:
   build:
     runs-on: ubuntu-latest
