@@ -43,7 +43,7 @@ jobs:
 
     - name: Check formatting
       run: |
-        clang-format -style=file -i $(git diff --name-only --cached | xargs -n 1)
+        git diff --name-only --cached | while read file; do clang-format -style=file -i "$file"; done
 
 
 
