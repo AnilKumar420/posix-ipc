@@ -8,7 +8,6 @@ on:
     branches: [ "mymain" ]
   workflow_dispatch:
 
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -42,6 +41,10 @@ jobs:
       run: |
         clang-tidy src/main.cpp -p build -checks='clang-analyzer-core.NullDereference,modernize-use-auto,readability-identifier-naming,readability-braces-around-statements'
 
+    - name: Run Clang-Check
+      run: |
+        clang-check src/main.cpp -p build
+
     - name: Check and format code
       run: |
         find src -name "*.cpp" -o -name "*.h" | while read file; do
@@ -51,7 +54,7 @@ jobs:
 
     - name: Commit changes (**without adding token directly**)
       env:
-        GITHUB_TOKEN: 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  # Replace with your actual token
+        GITHUB_TOKEN: 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  # Use the GitHub token from secrets
       run: |
         git config --local user.name 'AnilKumar420'
         git config --local user.email 'anilkumar.ratnakaram@gmail.com'
@@ -60,7 +63,7 @@ jobs:
 
     - name: Push changes (**using token from secret**)
       env:
-        GITHUB_TOKEN: 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  # Replace with your actual token
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Use the GitHub token from secrets
       run: |
         git push origin AnilKumar420-patch-2
 
