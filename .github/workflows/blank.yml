@@ -50,6 +50,8 @@ jobs:
         done | xargs clang-tidy -p build -checks='clang-analyzer-core.NullDereference,modernize-use-auto,readability-identifier-naming,readability-braces-around-statements'
 
     - name: Commit changes (**without adding token directly**)
+      env:
+        GITHUB_TOKEN: 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  # Replace with your actual token
       run: |
         git config --local user.name 'AnilKumar420'
         git config --local user.email 'anilkumar.ratnakaram@gmail.com'
