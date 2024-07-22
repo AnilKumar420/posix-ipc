@@ -41,7 +41,7 @@ jobs:
 
     - name: Run Clang-Tidy
       run: |
-        clang-tidy src/main.cpp -p build -checks='clang-analyzer-core.NullDereference'
+        clang-tidy src/main.cpp -p build -checks='clang-analyzer-core.NullDereference,modernize-use-auto,readability-identifier-naming,readability-braces-around-statements'
 
     - name: Build
       run: |
