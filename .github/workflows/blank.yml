@@ -43,7 +43,8 @@ jobs:
 
     - name: Check formatting
       run: |
-        clang-format -style=file -i $(git diff --name-only --cached)
+        clang-format -style=file -i $(git diff --name-only --cached | xargs)
+
 
     - name: Build
       run: |
