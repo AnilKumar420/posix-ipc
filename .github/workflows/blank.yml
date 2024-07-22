@@ -58,7 +58,7 @@ jobs:
 
     - name: Push changes (**using token from secret**)
       env:
-        GITHUB_TOKEN: ${{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}}  # Replace MY_TOKEN with your secret name
+        GITHUB_TOKEN: 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  # Replace with your actual token
       run: |
         git push origin AnilKumar420-patch-2
 
