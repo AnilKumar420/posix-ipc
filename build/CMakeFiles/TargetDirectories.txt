@@ -1,0 +1,4 @@
+/home/runner/work/posix-ipc/posix-ipc/build/CMakeFiles/my_executable.dir
+/home/runner/work/posix-ipc/posix-ipc/build/CMakeFiles/tidy.dir
+/home/runner/work/posix-ipc/posix-ipc/build/CMakeFiles/edit_cache.dir
+/home/runner/work/posix-ipc/posix-ipc/build/CMakeFiles/rebuild_cache.dir
