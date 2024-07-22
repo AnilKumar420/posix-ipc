@@ -49,7 +49,7 @@ jobs:
           echo "$file"
         done | xargs clang-tidy -p build -checks='clang-analyzer-core.NullDereference,modernize-use-auto,readability-identifier-naming,readability-braces-around-statements'
 
-    - name: Commit changes (**without adding token directly**):
+    - name: Commit changes (**without adding token directly**)
       run: |
         git config --local user.name 'AnilKumar420'
         git config --local user.email 'anilkumar.ratnakaram@gmail.com'
