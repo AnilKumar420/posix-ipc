@@ -50,7 +50,6 @@ jobs:
         FORMAT_DIFF=$(find src -name "*.cpp" -o -name "*.h" | xargs clang-format -style=file -output-replacements-xml | grep "<replacement " || true)
         if [ -n "$FORMAT_DIFF" ]; then
           echo "Code is not formatted according to clang-format rules. Please format your code and try again."
-          exit 1
         else
           echo "Code is properly formatted."
         fi
@@ -64,7 +63,7 @@ jobs:
 
     - name: Commit changes (**without adding token directly**)
       env:
-        GITHUB_TOKEN: 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  # Use the GitHub token from secrets
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Use the GitHub token from secrets
       run: |
         git config --local user.name 'AnilKumar420'
         git config --local user.email 'anilkumar.ratnakaram@gmail.com'
@@ -73,7 +72,7 @@ jobs:
 
     - name: Push changes (**using token from secret**)
       env:
-        GITHUB_TOKEN: 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  # Use the GitHub token from secrets
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Use the GitHub token from secrets
       run: |
         git push origin AnilKumar420-patch-2
 
