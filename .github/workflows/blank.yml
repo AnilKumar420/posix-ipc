@@ -1,46 +1,71 @@
-# This is a basic workflow to help you get started with Actions
-
 name: CI
 
 # Controls when the workflow will run
 on:
-  # Triggers the workflow on push or pull request events but only for the "main" branch
   push:
-    branches: [ "main" ]
+    branches: [ "AnilKumar420-patch-2" ]
   pull_request:
-    branches: [ "main" ]
-
-  # Allows you to run this workflow manually from the Actions tab
+    branches: [ "mymain" ]
   workflow_dispatch:
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
   build:
-    # The type of runner that the job will run on
     runs-on: ubuntu-latest
     strategy:
       matrix:
         os: [ubuntu-latest]
 
     steps:
-    # Steps represent a sequence of tasks that will be executed as part of the job
     - name: Checkout repository
-      uses: actions/checkout@v2   
+      uses: actions/checkout@v2
 
     - name: Set up compiler
       if: matrix.os == 'ubuntu-latest'
       run: |
         sudo apt-get update
-        sudo apt-get install -y gcc g++ clang clang-tidy
+        sudo apt-get install -y gcc g++ clang clang-tidy bear clang-format
 
     - name: Configure CMake
       run: |
-        cmake -S . -B build
+        cmake -S . -B build -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+
+    - name: Generate compile_commands.json
+      run: |
+        bear -- cmake --build build
+
+    - name: Verify compile_commands.json
+      run: |
+        ls -l build/compile_commands.json
 
     - name: Run Clang-Tidy
       run: |
-        cmake --build build --target tidy
+        clang-tidy src/main.cpp -p build -checks='clang-analyzer-core.NullDereference,modernize-use-auto,readability-identifier-naming,readability-braces-around-statements'
+
+    - name: Run Clang-Check
+      run: |
+        clang-check src/main.cpp -p build
+
+    - name: Check and format code
+      run: |
+        find src -name "*.cpp" -o -name "*.h" | while read file; do
+          clang-format -style=file -i "$file"
+          echo "$file"
+        done | xargs clang-tidy -p build -checks='clang-analyzer-core.NullDereference,modernize-use-auto,readability-identifier-naming,readability-braces-around-statements'
+
+    - name: Commit changes (**without adding token directly**)
+      env:
+        GITHUB_TOKEN: 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  # Use the GitHub token from secrets
+      run: |
+        git config --local user.name 'AnilKumar420'
+        git config --local user.email 'anilkumar.ratnakaram@gmail.com'
+        git add .
+        git commit -m 'Formatted code and fixed Clang-Tidy issues'
+
+    - name: Push changes (**using token from secret**)
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Use the GitHub token from secrets
+      run: |
+        git push origin AnilKumar420-patch-2
 
     - name: Build
       run: |
