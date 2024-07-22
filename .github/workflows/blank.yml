@@ -8,6 +8,9 @@ on:
     branches: [ "mymain" ]
   workflow_dispatch:
 
+permissions:
+  contents: write  # Grant write permission to contents
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -74,7 +77,7 @@ jobs:
       env:
         GITHUB_TOKEN: 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  # Use the GitHub token from secrets
       run: |
-        git push origin AnilKumar420-patch-2
+        git push https://x-access-token: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@github.com/AnilKumar420/posix-ipc.git AnilKumar420-patch-2
 
     - name: Build
       run: |
