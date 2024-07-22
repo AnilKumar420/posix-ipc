@@ -1,8 +1,5 @@
-# This is a basic workflow to help you get started with Actions
-
 name: CI
 
-# Controls when the workflow will run
 on:
   push:
     branches: [ "AnilKumar420-patch-2" ]
@@ -41,7 +38,7 @@ jobs:
 
     - name: Run Clang-Tidy
       run: |
-        clang-tidy src/main.cpp -p build -checks='clang-analyzer-core.NullDereference'
+        clang-tidy -p build -checks='-*,clang-analyzer-core.NullDereference,readability-.*' src
 
     - name: Build
       run: |
