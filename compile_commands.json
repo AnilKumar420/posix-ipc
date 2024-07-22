@@ -1,15 +1,1 @@
-[
-  {
-    "arguments": [
-      "/usr/bin/c++",
-      "-std=gnu++17",
-      "-c",
-      "-o",
-      "CMakeFiles/my_executable.dir/src/main.cpp.o",
-      "/home/runner/work/posix-ipc/posix-ipc/src/main.cpp"
-    ],
-    "directory": "/home/runner/work/posix-ipc/posix-ipc/build",
-    "file": "/home/runner/work/posix-ipc/posix-ipc/src/main.cpp",
-    "output": "/home/runner/work/posix-ipc/posix-ipc/build/CMakeFiles/my_executable.dir/src/main.cpp.o"
-  }
-]
+[]
