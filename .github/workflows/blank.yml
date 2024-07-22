@@ -8,8 +8,7 @@ on:
     branches: [ "mymain" ]
   workflow_dispatch:
 
-env:
-  GITHUB_TOKEN: ${{ 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 }}
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -42,20 +41,26 @@ jobs:
     - name: Run Clang-Tidy
       run: |
         clang-tidy src/main.cpp -p build -checks='clang-analyzer-core.NullDereference,modernize-use-auto,readability-identifier-naming,readability-braces-around-statements'
+
     - name: Check and format code
       run: |
         find src -name "*.cpp" -o -name "*.h" | while read file; do
-        clang-format -style=file -i "$file"
-        echo "$file"
+          clang-format -style=file -i "$file"
+          echo "$file"
         done | xargs clang-tidy -p build -checks='clang-analyzer-core.NullDereference,modernize-use-auto,readability-identifier-naming,readability-braces-around-statements'
 
-    - name: Commit changes
+    - name: Commit changes (**without adding token directly**):
       run: |
-          git config --local user.name 'AnilKumar420'
-          git config --local user.email 'anilkumar.ratnakaram@gmail.com'
-          git add .
-          git commit -m 'Formatted code and fixed Clang-Tidy issues'
-          git push origin AnilKumar420-patch-2
+        git config --local user.name 'AnilKumar420'
+        git config --local user.email 'anilkumar.ratnakaram@gmail.com'
+        git add .
+        git commit -m 'Formatted code and fixed Clang-Tidy issues'
+
+    - name: Push changes (**using token from secret**)
+      env:
+        GITHUB_TOKEN: ${{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}}  # Replace MY_TOKEN with your secret name
+      run: |
+        git push origin AnilKumar420-patch-2
 
     - name: Build
       run: |
