@@ -1,5 +1,3 @@
-# This is a basic workflow to help you get started with Actions
-
 name: CI
 
 # Controls when the workflow will run
@@ -25,7 +23,7 @@ jobs:
       if: matrix.os == 'ubuntu-latest'
       run: |
         sudo apt-get update
-        sudo apt-get install -y gcc g++ clang clang-tidy bear
+        sudo apt-get install -y gcc g++ clang clang-tidy bear clang-format
 
     - name: Configure CMake
       run: |
@@ -42,6 +40,10 @@ jobs:
     - name: Run Clang-Tidy
       run: |
         clang-tidy src/main.cpp -p build -checks='clang-analyzer-core.NullDereference,modernize-use-auto,readability-identifier-naming,readability-braces-around-statements'
+
+    - name: Check formatting
+      run: |
+        clang-format -style=file -i $(git diff --name-only --cached)
 
     - name: Build
       run: |
