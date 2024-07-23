@@ -1,0 +1,5 @@
+/home/runner/work/posix-ipc/posix-ipc/build/CMakeFiles/calculator.dir
+/home/runner/work/posix-ipc/posix-ipc/build/CMakeFiles/runCalculatorTests.dir
+/home/runner/work/posix-ipc/posix-ipc/build/CMakeFiles/test.dir
+/home/runner/work/posix-ipc/posix-ipc/build/CMakeFiles/edit_cache.dir
+/home/runner/work/posix-ipc/posix-ipc/build/CMakeFiles/rebuild_cache.dir

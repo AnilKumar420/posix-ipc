@@ -1,0 +1,26 @@
+[
+{
+  "directory": "/home/runner/work/posix-ipc/posix-ipc/build",
+  "command": "/usr/bin/c++   -std=gnu++11 -o CMakeFiles/calculator.dir/src/main.cpp.o -c /home/runner/work/posix-ipc/posix-ipc/src/main.cpp",
+  "file": "/home/runner/work/posix-ipc/posix-ipc/src/main.cpp",
+  "output": "CMakeFiles/calculator.dir/src/main.cpp.o"
+},
+{
+  "directory": "/home/runner/work/posix-ipc/posix-ipc/build",
+  "command": "/usr/bin/c++   -std=gnu++11 -o CMakeFiles/calculator.dir/src/calculator.cpp.o -c /home/runner/work/posix-ipc/posix-ipc/src/calculator.cpp",
+  "file": "/home/runner/work/posix-ipc/posix-ipc/src/calculator.cpp",
+  "output": "CMakeFiles/calculator.dir/src/calculator.cpp.o"
+},
+{
+  "directory": "/home/runner/work/posix-ipc/posix-ipc/build",
+  "command": "/usr/bin/c++   -std=gnu++11 -DGTEST_HAS_PTHREAD=1 -o CMakeFiles/runCalculatorTests.dir/tests/test_calculator.cpp.o -c /home/runner/work/posix-ipc/posix-ipc/tests/test_calculator.cpp",
+  "file": "/home/runner/work/posix-ipc/posix-ipc/tests/test_calculator.cpp",
+  "output": "CMakeFiles/runCalculatorTests.dir/tests/test_calculator.cpp.o"
+},
+{
+  "directory": "/home/runner/work/posix-ipc/posix-ipc/build",
+  "command": "/usr/bin/c++   -std=gnu++11 -DGTEST_HAS_PTHREAD=1 -o CMakeFiles/runCalculatorTests.dir/src/calculator.cpp.o -c /home/runner/work/posix-ipc/posix-ipc/src/calculator.cpp",
+  "file": "/home/runner/work/posix-ipc/posix-ipc/src/calculator.cpp",
+  "output": "CMakeFiles/runCalculatorTests.dir/src/calculator.cpp.o"
+}
+]
