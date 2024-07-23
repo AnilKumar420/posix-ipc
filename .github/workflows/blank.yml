@@ -27,12 +27,11 @@ jobs:
       run: |
         sudo apt-get update
         sudo apt-get install -y gcc g++ clang clang-tidy bear clang-format
-        sudo apt-get install -y libgtest-dev
-        sudo apt-get install -y cmake
+        sudo apt-get install -y libgtest-dev cmake
         cd /usr/src/gtest
-        sudo cmake CMakeLists.txt
+        sudo cmake .
         sudo make
-        sudo cp *.a /usr/lib
+        sudo cp ./lib/libgtest*.a /usr/lib
 
     - name: Configure CMake
       run: |
