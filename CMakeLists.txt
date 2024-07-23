@@ -1,20 +1,21 @@
+# CMakeLists.txt
+
 cmake_minimum_required(VERSION 3.10)
-set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-project(MyProject)
+project(ExampleProject)
 
-set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_STANDARD 11)
 
-add_executable(my_executable src/main.cpp)
+add_executable(example src/main.cpp)
 
-# Add clang-tidy target
-find_program(CLANG_TIDY "clang-tidy")
-if(CLANG_TIDY)
-  add_custom_target(
-    tidy
-    COMMAND ${CLANG_TIDY} -p ${CMAKE_BINARY_DIR} ${CMAKE_SOURCE_DIR}/src/main.cpp
-    WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
-    COMMENT "Running clang-tidy"
-  )
-endif()
+# Add gtest
+enable_testing()
+
+find_package(GTest REQUIRED)
+include_directories(${GTEST_INCLUDE_DIRS})
+
+add_executable(runTests tests/test_example.cpp)
+
+target_link_libraries(runTests ${GTEST_LIBRARIES} pthread)
+
+add_test(NAME example_test COMMAND runTests)
