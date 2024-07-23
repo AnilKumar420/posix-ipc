@@ -1,20 +1,12 @@
-// src/example.cpp
+// src/main.cpp
 
+#include "calculator.cpp"
 #include <iostream>
 
-class Example {
-  public:
-    void process()
-    {
-        int *ptr = nullptr;
-        // Potential null pointer dereference
-        *ptr = 10; // This line should trigger the null dereference check
-    }
-};
-
-int main()
-{
-    Example ex;
-    ex.process();
+int main() {
+    Calculator calc;
+    int result = calc.add(2, 3);
+    std::cout << "Result of addition: " << result << std::endl;
     return 0;
 }
+
